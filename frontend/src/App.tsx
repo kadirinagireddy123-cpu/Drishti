@@ -58,9 +58,9 @@ export default function App() {
       const r = await visionAssist(demo, cam.current?.capture() ?? null, mode === 'ask' ? 'safety' : mode, lang);
       setHazards(r.hazards);
       const text = r.alert ?? r.text ?? '';
-      const bad = r.hazards.some((h) => h.severity === 'high');
+      const bad = r.hazards.some((h: any) => h.severity === 'high');
       const safe = r.path_clear && !bad;
-      const urgent = bad || r.hazards.some((h) => h.kind === 'vehicle');
+      const urgent = bad || r.hazards.some((h: any) => h.kind === 'vehicle');
       setBanner(mode === 'safety' || r.hazards.length ? { tone: safe ? 'clear' : 'hazard', title: safe ? 'Path looks clear' : 'Hazard ahead', text } : { tone: 'info', title: 'Result', text });
       if (text !== last.current) { last.current = text; addLog('Scan', text); say(text, urgent); }
     } catch (e) { setBanner({ tone: 'hazard', title: 'Could not reach the server', text: msg(e) }); }
