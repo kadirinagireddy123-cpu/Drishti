@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@theme {
+  --color-ink: #0E1424;
+  --color-panel: #18203A;
+  --color-line: #2C3760;
+  --color-paper: #F4F1E8;
+  --color-mute: #A9B2CC;
+  --color-amber: #FFB520;
+  --color-ok: #4ADE80;
+  --color-bad: #FF6B5E;
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+body { @apply bg-ink text-paper font-sans text-lg; }
+:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 3px; }
